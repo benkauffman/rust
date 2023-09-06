@@ -6,13 +6,15 @@
         "compile": "cargo build",
         "build": "cargo build --release",
         "test": "cargo test",
-        "package": "npx sls package",
-        "deploy": "npx sls deploy",
-        "invoke": "npx sls invoke -f func -d '{\"name\":\"Ben\"}'",
-        "remove": "npx sls remove"
+        "package": "npx sls package --verbose -s development",
+        "domain": "npx sls create_domain --verbose -s development",
+        "deploy": "npx sls deploy --verbose -s development",
+        "invoke": "npx sls invoke --verbose -s development -f func -d '{\"name\":\"Ben\"}'",
+        "remove": "npx sls remove --verbose -s development"
     },
     "devDependencies": {
         "serverless": "^3.34.0",
+        "serverless-domain-manager": "^7.1.2",
         "serverless-rust": "^0.3.8"
     }
 }

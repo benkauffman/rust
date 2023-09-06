@@ -2,6 +2,9 @@ service: ${file(./package.json):name}
 
 frameworkVersion: '3'
 
+plugins:
+  - serverless-domain-manager
+
 provider:
   name: aws
   ecr:

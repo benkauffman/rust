@@ -1,21 +1,39 @@
-service: ${file(./package.json):name}
-provider:
-  name: aws
-  runtime: rust
-  memorySize: 128
-  stage: ${env:STAGE}
-  region: us-east-1
+service: ${self:custom.name}
+
+frameworkVersion: '3'
+
+plugins:
+  - serverless-domain-manager
+  - serverless-rust
 
 package:
   individually: true
 
 custom:
+  name: ${file(./package.json):name}
+  
+  config: ${file(../infra/config/${opt:stage}.js)}
+  
   rust:
     dockerless: true
 
-plugins:
-  - serverless-rust
+  customDomain:
+    domainName: ${file(./package.json):name}.${self:custom.config.domain}
+    stage: ${self:custom.config.stage}
+    basePath: (none)
+    certificateName: "*.${self:custom.config.domain}"
+    createRoute53Record: true
+    securityPolicy: tls_1_2
+    apiType: rest
+    autoDomain: false
+
+provider:
+  name: aws
+  runtime: rust
+  memorySize: 128
+  stage: ${self:custom.config.stage}
+  region: us-east-1
 
 functions:
   func:
-    handler: "sls-lambda-rust"
+    handler: ${self:custom.name}

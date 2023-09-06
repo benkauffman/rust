@@ -13,6 +13,7 @@
     },
     "devDependencies": {
         "serverless": "^3.34.0",
+        "serverless-domain-manager": "^7.1.2",
         "serverless-rust": "^0.3.8"
     }
 }

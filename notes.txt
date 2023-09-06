@@ -4,3 +4,19 @@ https://github.com/aws-samples/serverless-rust-demo/
 https://www.cargo-lambda.info/guide/what-is-cargo-lambda.html
 
 https://github.com/aws-samples/aws-aurora-cloudformation-samples/blob/master/README.md
+https://github.com/jottenlips/rust-rocket-ecs/blob/main/main.tf
+
+FIFO & Regular Queuing
+
+Packer - back an AMI and deploy to an account
+
+
+https://medium.com/innomizetech/top-serverless-plugins-we-are-using-f02df901bbbf
+https://github.com/amplify-education/serverless-vpc-discovery
+https://www.serverless.com/plugins/serverless-vpc-plugin
+https://www.serverless.com/plugins/serverless-fargate-tasks
+https://www.serverless.com/plugins/serverless-fargate
+https://github.com/honerlaw/containerless
+https://github.com/honerlaw/serverless-fargate-plugin
+https://github.com/svdgraaf/serverless-fargate-tasks
+https://github.com/mikaelvesavuori/serverless-node-fargate-example/blob/master/serverless.yml
