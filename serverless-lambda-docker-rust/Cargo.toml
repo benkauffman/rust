@@ -1,5 +1,5 @@
 [package]
-name = "sls-lambda-rust"
+name = "sls-lambda-docker-rust"
 version = "0.1.0"
 edition = "2021"
 

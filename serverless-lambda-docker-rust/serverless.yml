@@ -1,0 +1,23 @@
+service: ${file(./package.json):name}
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  ecr:
+    # In this section you can define images that will be built locally and uploaded to ECR
+    images:
+      func:
+        path: ./
+
+functions:
+  func:
+    image:
+      name: func
+#    The following are a few example events you can configure
+#    NOTE: Please make sure to change your handler code to work with those events
+#    Check the event documentation for details
+#    events:
+#      - httpApi:
+#          path: /users/create
+#          method: get

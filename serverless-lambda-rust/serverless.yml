@@ -1,9 +1,9 @@
-service: "serverless-lambda-rust"
+service: ${file(./package.json):name}
 provider:
   name: aws
   runtime: rust
   memorySize: 128
-  stage: dev
+  stage: ${env:STAGE}
   region: us-east-1
 
 package:
@@ -18,4 +18,4 @@ plugins:
 
 functions:
   func:
-    handler: "serverless-lambda-rust"
+    handler: "sls-lambda-rust"

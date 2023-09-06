@@ -1,5 +1,5 @@
 {
-    "name": "sls-lambda-rust",
+    "name": "sls-lambda-docker-rust",
     "scripts": {
         "fmt": "cargo fmt",
         "lint": "cargo clippy",

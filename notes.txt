@@ -1,0 +1,6 @@
+https://docs.aws.amazon.com/lambda/latest/dg/lambda-rust.html
+
+https://github.com/aws-samples/serverless-rust-demo/
+https://www.cargo-lambda.info/guide/what-is-cargo-lambda.html
+
+https://github.com/aws-samples/aws-aurora-cloudformation-samples/blob/master/README.md
