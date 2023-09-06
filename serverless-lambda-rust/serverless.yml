@@ -1,0 +1,21 @@
+service: "serverless-lambda-rust"
+provider:
+  name: aws
+  runtime: rust
+  memorySize: 128
+  stage: dev
+  region: us-east-1
+
+package:
+  individually: true
+
+custom:
+  rust:
+    dockerless: true
+
+plugins:
+  - serverless-rust
+
+functions:
+  func:
+    handler: "serverless-lambda-rust"

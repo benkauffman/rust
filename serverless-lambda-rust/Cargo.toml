@@ -1,0 +1,12 @@
+[package]
+name = "serverless-lambda-rust"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+lambda_http = "0.8.1"
+lambda_runtime = "0.8.2"
+serde_json = "1.0.105"
+tokio = "1.32.0"

@@ -1,0 +1,18 @@
+{
+    "name": "serverless-lambda-rust",
+    "scripts": {
+        "fmt": "cargo fmt",
+        "lint": "cargo clippy",
+        "compile": "cargo build",
+        "build": "cargo build --release",
+        "test": "cargo test",
+        "package": "npx serverless package",
+        "deploy": "npx serverless deploy",
+        "invoke": "npx serverless invoke -f func -d '{\"name\":\"Ben\"}'",
+        "remove": "npx serverless remove"
+    },
+    "devDependencies": {
+        "serverless": "^3.34.0",
+        "serverless-rust": "^0.3.8"
+    }
+}
