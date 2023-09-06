@@ -3,7 +3,7 @@ service: ${self:custom.name}
 frameworkVersion: '3'
 
 plugins:
-  - serverless-domain-manager
+  # - serverless-domain-manager
   - serverless-rust
 
 package:
@@ -17,15 +17,15 @@ custom:
   rust:
     dockerless: true
 
-  customDomain:
-    domainName: ${file(./package.json):name}.${self:custom.config.domain}
-    stage: ${self:custom.config.stage}
-    basePath: (none)
-    certificateName: "*.${self:custom.config.domain}"
-    createRoute53Record: true
-    securityPolicy: tls_1_2
-    apiType: rest
-    autoDomain: false
+  # customDomain:
+  #   domainName: ${file(./package.json):name}.${self:custom.config.domain}
+  #   stage: ${self:custom.config.stage}
+  #   basePath: (none)
+  #   certificateName: "*.${self:custom.config.domain}"
+  #   createRoute53Record: true
+  #   securityPolicy: tls_1_2
+  #   apiType: rest
+  #   autoDomain: false
 
 provider:
   name: aws
