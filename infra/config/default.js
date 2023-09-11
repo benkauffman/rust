@@ -1,3 +1,3 @@
 module.exports = {
-    domain: 'krashidbuilt.com'
+    domain: 'krashidbuilt.net'
 }

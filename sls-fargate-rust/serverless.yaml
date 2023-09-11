@@ -1,0 +1,46 @@
+service: ${self:custom.name}
+
+plugins:
+  - serverless-fargate-plugin
+
+provider:
+  name: aws
+  profile: "default"
+  stage: ${opt:stage,'dev'}
+  region: us-east-1
+  logRetentionInDays: 7
+
+functions:
+  func:
+    image:
+      name: "${self:custom.ecrImagePath.accountNumber}.dkr.ecr.${self:custom.ecrImagePath.region}.amazonaws.com/${self:custom.ecrImagePath.imageName}:${self:custom.ecrImagePath.imageTag}"
+    events:
+      - http: ANY /
+      - http: "ANY {proxy+}"
+
+custom:
+  name: ${file(./package.json):name}
+
+  ecrImagePath:
+    accountNumber: ${AWS::AccountId}
+    region: ${AWS::Region}
+    imageName: ${self:custom.name}
+    imageTag: latest
+  fargate:
+    vpc:
+      cidr: 10.0.0.0/16
+      subnets:
+        - 10.0.0.0/24
+        - 10.0.1.0/24
+    services:
+      - name: ${self:custom.name}
+        cpu: 512
+        memory: 1024
+        port: 8080
+        healthCheckUri: /
+        healthCheckInterval: 6
+        image: "${self:custom.ecrImagePath.accountNumber}.dkr.ecr.${self:custom.ecrImagePath.region}.amazonaws.com/${self:custom.ecrImagePath.imageName}:${self:custom.ecrImagePath.imageTag}"
+        environment:
+          PRODUCTION: true
+        protocols:
+          - protocol: HTTP

@@ -1,0 +1,20 @@
+{
+    "name": "sls-fargate-rust",
+    "scripts": {
+        "fmt": "cargo fmt",
+        "lint": "cargo clippy",
+        "compile": "cargo build",
+        "build": "cargo build --release",
+        "test": "cargo test",
+        "package": "npx sls package",
+        "deploy": "npx sls deploy",
+        "invoke": "npx sls invoke -f func -d '{\"name\":\"Ben\"}'",
+        "remove": "npx sls remove"
+    },
+    "devDependencies": {
+        "serverless": "^3.34.0",
+        "serverless-domain-manager": "^7.1.2",
+        "serverless-rust": "^0.3.8",
+        "serverless-fargate-plugin": "^2.0.0"
+    }
+}
