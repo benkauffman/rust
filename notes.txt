@@ -1,29 +1,46 @@
+### Documentation
 https://docs.aws.amazon.com/lambda/latest/dg/lambda-rust.html
 
-https://github.com/aws-samples/serverless-rust-demo/
-https://www.cargo-lambda.info/guide/what-is-cargo-lambda.html
 
-https://github.com/aws-samples/aws-aurora-cloudformation-samples/blob/master/README.md
-
-https://github.com/jottenlips/rust-rocket-ecs/blob/main/main.tf
-https://github.com/GREsau/rocket-lamb
-https://github.com/maxday/yt-lambda-rust/tree/main
+### Cloudformation Templates
+https://github.com/nathanpeck/aws-cloudformation-fargate
+https://github.com/nathanpeck/aws-cloudformation-fargate/blob/master/service-stacks/private-subnet-public-loadbalancer.yml
 
 
+### Serverless fargate code samples
+https://github.com/nathanpeck/aws-cloudformation-fargate
 
+### serverless-fargate-plugin
+https://github.com/honerlaw/serverless-fargate-plugin
+https://github.com/mikaelvesavuori/serverless-node-fargate-example
+
+### serverless-fargate
+https://www.serverless.com/plugins/serverless-fargate
+https://github.com/eddmann/serverless-fargate
+
+
+### Serverless Plugins
+https://github.com/honerlaw/containerless
 https://medium.com/innomizetech/top-serverless-plugins-we-are-using-f02df901bbbf
 https://github.com/amplify-education/serverless-vpc-discovery
 https://www.serverless.com/plugins/serverless-vpc-plugin
-https://www.serverless.com/plugins/serverless-fargate-tasks
 https://www.serverless.com/plugins/serverless-fargate
-https://github.com/honerlaw/containerless
-https://github.com/honerlaw/serverless-fargate-plugin
-https://github.com/svdgraaf/serverless-fargate-tasks
-https://github.com/mikaelvesavuori/serverless-node-fargate-example/blob/master/serverless.yml
+
+### AWS code samples
+https://github.com/aws-samples/serverless-rust-demo/
+
+### Other code samples
+https://www.cargo-lambda.info/guide/what-is-cargo-lambda.html
+https://github.com/jottenlips/rust-rocket-ecs (Terraform)
+https://github.com/GREsau/rocket-lamb (Lambda Wrapper for Rocket)
+https://github.com/GREsau/example-rocket-lamb-api (AWS CLI)
+
+### Serverless rust code samples
+https://github.com/maxday/yt-lambda-rust
 
 
-
-https://medium.com/free-code-camp/going-serverless-with-rust-and-api-gateway-aa5d1502c32e
+### Rust code samples
+https://medium.com/free-code-camp/going-serverless-with-rust-and-api-gateway-aa5d1502c32e (Terraform)
 
 ### Performance
 https://andygrove.io/2020/05/why-musl-extremely-slow/
@@ -44,8 +61,5 @@ FIFO & Regular Queuing
 
 Packer - back an AMI and deploy to an account
 
-
-VPC: vpc-07d3c10fe3c70532d
-Subnets: subnet-0c0283b3f6241847d, subnet-0c699b622745fa91d
-
-
+### Aurora
+https://github.com/aws-samples/aws-aurora-cloudformation-samples

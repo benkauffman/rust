@@ -2,6 +2,9 @@
 # exit script if any command fails
 set -e
 
+# confirm that you want to run this script
+read -p "Are you sure you want to remove the serverless application? (y/n) " -n 1 -r
+
 # set working directory to script directory
 cd "$(dirname "$0")"
 
