@@ -14,10 +14,10 @@ provider:
   name: aws
   runtime: rust
   memorySize: 128
-  # stage: ${self:custom.config.stage}
-  # region: us-east-1
-  # httpApi:
-  #   disableDefaultEndpoint: true
+  stage: ${self:custom.config.stage}
+  region: us-east-1
+  httpApi:
+    disableDefaultEndpoint: true
 
 functions:
   func:
