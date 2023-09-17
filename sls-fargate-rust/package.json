@@ -13,8 +13,6 @@
     },
     "devDependencies": {
         "serverless": "^3.34.0",
-        "serverless-domain-manager": "^7.1.2",
-        "serverless-rust": "^0.3.8",
-        "serverless-fargate-plugin": "^2.0.0"
+        "serverless-fargate": "^0.0.12"
     }
 }

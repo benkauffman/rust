@@ -1,7 +1,19 @@
 service: ${self:custom.name}
 
 plugins:
-  - serverless-fargate-plugin
+  - serverless-fargate
+
+custom:
+  name: ${file(./package.json):name}
+  subnets:
+    - subnet-a40e49c1
+    - subnet-556d2b7f
+    - subnet-83fa668f
+    - subnet-8fa690f9
+    - subnet-a792bc9a
+    - subnet-d93b7981
+  securityGroups:
+    - sg-ab9616d0
 
 provider:
   name: aws
@@ -10,37 +22,38 @@ provider:
   region: us-east-1
   logRetentionInDays: 7
 
-functions:
-  func:
-    image:
-      name: "${self:custom.ecrImagePath.accountNumber}.dkr.ecr.${self:custom.ecrImagePath.region}.amazonaws.com/${self:custom.ecrImagePath.imageName}:${self:custom.ecrImagePath.imageTag}"
-    events:
-      - http: ANY /
-      - http: "ANY {proxy+}"
+  ecr:
+    images:
+      sls-fargate-rust:
+        path: ./
 
-custom:
-  name: ${file(./package.json):name}
+  vpc:
+    # (optional) default security groups which are added to tasks that do not contain any overrides.
+    securityGroupIds: ${self:custom.securityGroups}
+    subnetIds: ${self:custom.subnets}
 
-  ecrImagePath:
-    accountNumber: ${AWS::AccountId}
-    region: ${AWS::Region}
-    imageName: ${self:custom.name}
-    imageTag: latest
-  fargate:
-    vpc:
-      cidr: 10.0.0.0/16
-      subnets:
-        - 10.0.0.0/24
-        - 10.0.1.0/24
-    services:
-      - name: ${self:custom.name}
-        cpu: 512
-        memory: 1024
-        port: 8080
-        healthCheckUri: /
-        healthCheckInterval: 6
-        image: "${self:custom.ecrImagePath.accountNumber}.dkr.ecr.${self:custom.ecrImagePath.region}.amazonaws.com/${self:custom.ecrImagePath.imageName}:${self:custom.ecrImagePath.imageTag}"
-        environment:
-          PRODUCTION: true
-        protocols:
-          - protocol: HTTP
+fargate:
+  tasks:
+    sls-fargate-rust:
+      # (required) the task image you wish to run, references images built within the `ecr` section.
+      image: sls-fargate-rust
+
+      vpc:
+        # (required) subnets you wish to apply to the given tasks; these override any provider/fargate-level configuration.
+        # all tasks MUST be assigned subnets as Fargate operates within `awsvpc` mode.
+        subnetIds: custom.subnets
+
+      service:
+        # (optional) the desired amount of running tasks for the given service.
+        desiredCount: 1
+
+        # (optional) used during deployment to determine how many tasks can be provisioned for the transition phase.
+        maximumPercent: 200
+
+        # (optional) used during deployment to determine how many tasks are required to remain active for the transition phase.
+        minimumHealthyPercent: 100
+
+        # (optional) flag to determine if you wish to provision the task using Fargate Spot.
+        # note: at this time there is no fallback measures in-place to ensure that the task will be provisioned using
+        # on-demand Fargate if the spot instance can not be acquired.
+        spot: false

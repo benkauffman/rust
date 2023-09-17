@@ -35,20 +35,23 @@ echo "ECR_URI: ${ECR_URI}"
 ECR_IMAGE_URI=${ECR_URI}/${PROJECT_NAME}:${GIT_HASH}
 echo "ECR_IMAGE_URI: ${ECR_IMAGE_URI}"
 
+# create service linked role in aws if not exists
+aws iam get-role --role-name AWSServiceRoleForECS --region ${REGION} || aws iam create-service-linked-role --aws-service-name ecs.amazonaws.com --region ${REGION}
+
 # # build the docker image
 docker build --ssh default -t ${PROJECT_NAME} .
 
-# create docker image repository if not exists
-aws ecr describe-repositories --repository-names ${PROJECT_NAME} --region ${REGION} || aws ecr create-repository --repository-name ${PROJECT_NAME} --region ${REGION}
+# # create docker image repository if not exists
+# aws ecr describe-repositories --repository-names ${PROJECT_NAME} --region ${REGION} || aws ecr create-repository --repository-name ${PROJECT_NAME} --region ${REGION}
 
-# login to AWS ECR
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${ECR_URI}
+# # login to AWS ECR
+# aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${ECR_URI}
 
-# tag docker image
-docker tag ${PROJECT_NAME}:latest ${ECR_IMAGE_URI}
+# # tag docker image
+# docker tag ${PROJECT_NAME}:latest ${ECR_IMAGE_URI}
 
-# push docker image to AWS ECR
-docker push ${ECR_IMAGE_URI}
+# # push docker image to AWS ECR
+# docker push ${ECR_IMAGE_URI}
 
 # deploy to AWS Fargate
 npx sls deploy --aws-profile ${AWS_PROFILE} --region ${REGION}
