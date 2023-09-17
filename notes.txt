@@ -7,7 +7,7 @@ https://github.com/aws-samples/aws-aurora-cloudformation-samples/blob/master/REA
 
 https://github.com/jottenlips/rust-rocket-ecs/blob/main/main.tf
 https://github.com/GREsau/rocket-lamb
-
+https://github.com/maxday/yt-lambda-rust/tree/main
 
 
 
@@ -24,6 +24,9 @@ https://github.com/mikaelvesavuori/serverless-node-fargate-example/blob/master/s
 
 
 https://medium.com/free-code-camp/going-serverless-with-rust-and-api-gateway-aa5d1502c32e
+
+### Performance
+https://andygrove.io/2020/05/why-musl-extremely-slow/
 
 
 ### Telemetry

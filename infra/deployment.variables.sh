@@ -7,6 +7,7 @@ export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
 
 # set STAGE environment variable if not defined, default to development
 export STAGE=${STAGE:-development}
+# export STAGE=${STAGE:-dev}
 
 echo AWS_DEFAULT_REGION : $AWS_DEFAULT_REGION
 echo AWS_PROFILE        : $AWS_PROFILE
