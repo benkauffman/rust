@@ -1,31 +1,13 @@
+frameworkVersion: "3"
+
 service: ${self:custom.name}
-
-frameworkVersion: '3'
-
-plugins:
-  - serverless-domain-manager
-  - serverless-rust
-
-package:
-  individually: true
 
 custom:
   name: ${file(./package.json):name}
-  
   config: ${file(../infra/config/${opt:stage}.js)}
-  
+  customDomain: ${file(../infra/customDomain.js)}
   rust:
     dockerless: true
-
-  customDomain:
-    domainName: ${file(./package.json):name}.${self:custom.config.domain}
-    stage: ${self:custom.config.stage}
-    basePath: (none)
-    certificateName: "${self:custom.config.domain}"
-    createRoute53Record: true
-    securityPolicy: tls_1_2
-    apiType: rest
-    autoDomain: false
 
 provider:
   name: aws
@@ -40,3 +22,10 @@ functions:
     events:
       - http: ANY /
       - http: "ANY {proxy+}"
+
+plugins:
+  - serverless-domain-manager
+  - serverless-rust
+
+package:
+  individually: true

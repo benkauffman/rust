@@ -1,19 +1,12 @@
-service: ${self:custom.name}
+frameworkVersion: "3"
 
-plugins:
-  - serverless-fargate
+service: ${self:custom.name}
 
 custom:
   name: ${file(./package.json):name}
-  subnets:
-    - subnet-a40e49c1
-    - subnet-556d2b7f
-    - subnet-83fa668f
-    - subnet-8fa690f9
-    - subnet-a792bc9a
-    - subnet-d93b7981
-  securityGroups:
-    - sg-ab9616d0
+  config: ${file(../infra/config/${opt:stage}.js)}
+  customDomain: ${file(../infra/customDomain.js)}
+  aws: ${file(../infra/aws.yml)}
 
 provider:
   name: aws
@@ -29,8 +22,8 @@ provider:
 
   vpc:
     # (optional) default security groups which are added to tasks that do not contain any overrides.
-    securityGroupIds: ${self:custom.securityGroups}
-    subnetIds: ${self:custom.subnets}
+    securityGroupIds: ${self:custom.aws.securityGroups}
+    subnetIds: ${self:custom.aws.subnets}
 
 fargate:
   tasks:
@@ -41,7 +34,7 @@ fargate:
       vpc:
         # (required) subnets you wish to apply to the given tasks; these override any provider/fargate-level configuration.
         # all tasks MUST be assigned subnets as Fargate operates within `awsvpc` mode.
-        subnetIds: ${self:custom.subnets}
+        subnetIds: ${self:custom.aws.subnets}
 
       service:
         # (optional) the desired amount of running tasks for the given service.
@@ -57,3 +50,7 @@ fargate:
         # note: at this time there is no fallback measures in-place to ensure that the task will be provisioned using
         # on-demand Fargate if the spot instance can not be acquired.
         spot: false
+
+plugins:
+  - serverless-domain-manager
+  - serverless-fargate

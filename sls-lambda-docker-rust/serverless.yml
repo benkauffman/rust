@@ -1,9 +1,13 @@
-service: ${file(./package.json):name}
+frameworkVersion: "3"
 
-frameworkVersion: '3'
+service: ${self:custom.name}
 
-plugins:
-  - serverless-domain-manager
+custom:
+  name: ${file(./package.json):name}
+  config: ${file(../infra/config/${opt:stage}.js)}
+  customDomain: ${file(../infra/customDomain.js)}
+  rust:
+    dockerless: true
 
 provider:
   name: aws
@@ -17,10 +21,9 @@ functions:
   func:
     image:
       name: func
-#    The following are a few example events you can configure
-#    NOTE: Please make sure to change your handler code to work with those events
-#    Check the event documentation for details
-#    events:
-#      - httpApi:
-#          path: /users/create
-#          method: get
+    events:
+      - http: ANY /
+      - http: "ANY {proxy+}"
+
+plugins:
+  - serverless-domain-manager
