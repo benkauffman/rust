@@ -1,5 +1,5 @@
 {
-    "name": "sls-fargate",
+    "name": "sls-fargate-plugin",
     "scripts": {
         "fmt": "cargo fmt",
         "lint": "cargo clippy",
@@ -19,6 +19,7 @@
     "devDependencies": {
         "serverless": "^3.34.0",
         "serverless-certificate-creator": "^1.6.0",
-        "serverless-domain-manager": "^7.1.2"
+        "serverless-domain-manager": "^7.1.2",
+        "serverless-fargate-plugin": "^2.0.0"
     }
 }

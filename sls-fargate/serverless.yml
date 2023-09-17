@@ -18,7 +18,7 @@ provider:
     disableDefaultEndpoint: true
   ecr:
     images:
-      sls-fargate-rust:
+      sls-fargate-plugin:
         path: ./
 
   vpc:
@@ -28,9 +28,9 @@ provider:
 
 fargate:
   tasks:
-    sls-fargate-rust:
+    sls-fargate-plugin:
       # (required) the task image you wish to run, references images built within the `ecr` section.
-      image: sls-fargate-rust
+      image: sls-fargate-plugin
 
       vpc:
         # (required) subnets you wish to apply to the given tasks; these override any provider/fargate-level configuration.
@@ -55,4 +55,4 @@ fargate:
 plugins:
   - serverless-certificate-creator
   - serverless-domain-manager
-  - serverless-fargate
+  - serverless-fargate-plugin
