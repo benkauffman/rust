@@ -41,7 +41,7 @@ fargate:
       vpc:
         # (required) subnets you wish to apply to the given tasks; these override any provider/fargate-level configuration.
         # all tasks MUST be assigned subnets as Fargate operates within `awsvpc` mode.
-        subnetIds: custom.subnets
+        subnetIds: ${self:custom.subnets}
 
       service:
         # (optional) the desired amount of running tasks for the given service.
