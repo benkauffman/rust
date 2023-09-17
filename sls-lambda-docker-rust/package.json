@@ -6,10 +6,7 @@
         "compile": "cargo build",
         "build": "cargo build --release",
         "test": "cargo test",
-        "package": "npx sls package",
-        "deploy": "npx sls deploy",
-        "invoke": "npx sls invoke -f func -d '{\"name\":\"Ben\"}'",
-        "remove": "npx sls remove"
+        "invoke": "npx sls invoke -f func -d '{\"name\":\"Ben\"}'"
     },
     "devDependencies": {
         "serverless": "^3.34.0",
