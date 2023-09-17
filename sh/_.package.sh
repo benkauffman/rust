@@ -4,6 +4,7 @@ set -e
 
 # get current working directory so we can return to it later
 CALLER_DIR=$(pwd)
+echo "CALLER_DIR: ${CALLER_DIR}"
 
 # set working directory to script directory
 cd "$(dirname "$0")"

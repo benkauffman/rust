@@ -11,11 +11,11 @@ custom:
 
 provider:
   name: aws
-  profile: "default"
-  stage: ${opt:stage,'dev'}
-  region: us-east-1
   logRetentionInDays: 7
-
+  stage: ${self:custom.config.stage}
+  region: us-east-1
+  httpApi:
+    disableDefaultEndpoint: true
   ecr:
     images:
       sls-fargate-rust:
@@ -56,4 +56,3 @@ plugins:
   - serverless-certificate-creator
   - serverless-domain-manager
   - serverless-fargate
-  

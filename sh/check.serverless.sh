@@ -2,8 +2,12 @@
 # exit script if any command fails
 set -e
 
-# if ./serverless.yml does not exist, exit
-if [ ! -f ${1}/serverless.yml ]; then
-    echo "./serverless.yml not found at the current location: $(pwd)"
+SERVERLESS_FILE_PATH=${1}/serverless.yml
+
+echo checking serverless file exists at: ${SERVERLESS_FILE_PATH}
+
+# check serverless file exists
+if [ ! -f ${SERVERLESS_FILE_PATH} ]; then
+    echo "Could not find serverless file at: ${SERVERLESS_FILE_PATH}"
     exit 1
 fi

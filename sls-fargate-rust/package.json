@@ -9,8 +9,10 @@
         "dev": "../sh/_.dev.sh",
         "logs": "../sh/_.logs.sh",
         "logs:tail": "../sh/_.logs.tail.sh",
+        "clean": "../sh/_.clean.sh",
         "print": "../sh/_.print.sh",
         "build": "../sh/_.build.sh",
+        "package": "../sh/_.package.sh",
         "deploy": "../sh/_.deploy.sh",
         "remove": "../sh/_.remove.sh"
     },

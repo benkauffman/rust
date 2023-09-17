@@ -14,5 +14,5 @@ RUN cargo build --target x86_64-unknown-linux-musl --release
 FROM scratch
 
 WORKDIR /app
-COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/sls-fargate ./
-CMD ["/app/sls-fargate"]
+COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/sls-lambda-docker-rust ./
+CMD ["/app/sls-lambda-docker-rust"]
