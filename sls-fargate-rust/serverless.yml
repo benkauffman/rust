@@ -32,10 +32,15 @@ fargate:
       # (required) the task image you wish to run, references images built within the `ecr` section.
       image: sls-fargate-rust
 
+      # architecture: X86_64 | ARM64
+      architecture: ARM64
+
       vpc:
         # (required) subnets you wish to apply to the given tasks; these override any provider/fargate-level configuration.
         # all tasks MUST be assigned subnets as Fargate operates within `awsvpc` mode.
         subnetIds: ${self:custom.aws.subnets}
+
+        assignPublicIp: true
 
       service:
         # (optional) the desired amount of running tasks for the given service.
