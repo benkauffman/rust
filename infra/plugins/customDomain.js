@@ -2,7 +2,6 @@ module.exports = async ({ resolveVariable }) => {
 
     const name = await resolveVariable('self:custom.name');
     const domain = await resolveVariable('self:custom.config.domain');
-    const stage = await resolveVariable('self:custom.config.stage');
     const certificateName = await resolveVariable('self:custom.config.domain');
 
     const basePath = '';
@@ -15,7 +14,7 @@ module.exports = async ({ resolveVariable }) => {
 
     return {
         domainName: `${name}.${domain}`,
-        stage,
+        stage: '$default',
         basePath,
         certificateName,
         createRoute53Record,
