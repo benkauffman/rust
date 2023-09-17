@@ -1,5 +1,6 @@
 ### Documentation
 https://docs.aws.amazon.com/lambda/latest/dg/lambda-rust.html
+https://aws.amazon.com/blogs/opensource/rust-runtime-for-aws-lambda/
 
 
 ### Cloudformation Templates

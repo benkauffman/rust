@@ -4,12 +4,19 @@
         "fmt": "cargo fmt",
         "lint": "cargo clippy",
         "compile": "cargo build",
-        "build": "cargo build --release",
         "test": "cargo test",
-        "invoke": "npx sls invoke -f func -d '{\"name\":\"Ben\"}'"
+        "invoke": "npx sls invoke -f func -d '{\"name\":\"Ben\"}'",
+        "logs": "../sh/_.logs.sh",
+        "logs:tail": "../sh/_.logs.tail.sh",
+        "print": "../sh/_.print.sh",
+        "build": "../sh/_.build.sh",
+        "package": "../sh/_.package.sh",
+        "deploy": "../sh/_.deploy.sh",
+        "remove": "../sh/_.remove.sh"
     },
     "devDependencies": {
         "serverless": "^3.34.0",
+        "serverless-certificate-creator": "^1.6.0",
         "serverless-domain-manager": "^7.1.2"
     }
 }

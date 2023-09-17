@@ -4,4 +4,5 @@
 # But not these files...
 !src/**
 !src/**/*
+!.cargo
 !Cargo.*

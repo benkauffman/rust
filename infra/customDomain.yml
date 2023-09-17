@@ -1,8 +1,0 @@
-domainName: ${self:custom.name}.${self:custom.config.domain}
-stage: ${self:custom.config.stage}
-basePath: (none)
-certificateName: "${self:custom.config.domain}"
-createRoute53Record: true
-securityPolicy: tls_1_2
-apiType: rest
-autoDomain: false

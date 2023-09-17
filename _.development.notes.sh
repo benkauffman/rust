@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# cross compiling rust
+# https://github.com/cross-rs/cross
+
+# snippet for cross compiling rust on mac
+# https://gist.github.com/shqld/256e2c4f4b97957fb0ec250cdc6dc463
+# brew tap messense/macos-cross-toolchains
+# brew install x86_64-unknown-linux-gnu
+
 ### Guide to deploy to AWS Lambda using Serverless Framework
 # https://scicoding.com/serverless-rust-introduction/
 

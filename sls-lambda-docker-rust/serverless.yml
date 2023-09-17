@@ -5,7 +5,8 @@ service: ${self:custom.name}
 custom:
   name: ${file(./package.json):name}
   config: ${file(../infra/config/${opt:stage}.js)}
-  customDomain: ${file(../infra/customDomain.js)}
+  customDomain: ${file(../infra/plugins/customDomain.js)}
+  customCertificate: ${file(../infra/plugins/customCertificate.js)}
   rust:
     dockerless: true
 
@@ -15,14 +16,18 @@ provider:
     images:
       func:
         path: ./
+  stage: ${self:custom.config.stage}
+  region: us-east-1
+  httpApi:
+    disableDefaultEndpoint: true
 
 functions:
   func:
     image:
       name: func
     events:
-      - http: ANY /
-      - http: "ANY {proxy+}"
+      - httpApi: "*"
 
 plugins:
+  - serverless-certificate-creator
   - serverless-domain-manager
