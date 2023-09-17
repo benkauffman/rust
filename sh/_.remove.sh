@@ -26,5 +26,5 @@ npx sls remove --aws-profile ${AWS_PROFILE} --region ${AWS_DEFAULT_REGION} --sta
 # delete domain
 npx sls delete_domain --aws-profile ${AWS_PROFILE} --region ${AWS_DEFAULT_REGION} --stage ${STAGE} --verbose
 
-# delete certificate
-npx sls remove-cert --aws-profile ${AWS_PROFILE} --region ${AWS_DEFAULT_REGION} --stage ${STAGE} --verbose
+# # delete certificate
+# npx sls remove-cert --aws-profile ${AWS_PROFILE} --region ${AWS_DEFAULT_REGION} --stage ${STAGE} --verbose

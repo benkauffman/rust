@@ -6,6 +6,7 @@
         "compile": "cargo build",
         "test": "cargo test",
         "invoke": "npx sls invoke -f func -d '{\"name\":\"Ben\"}'",
+        "dev": "../sh/_.dev.sh",
         "logs": "../sh/_.logs.sh",
         "logs:tail": "../sh/_.logs.tail.sh",
         "print": "../sh/_.print.sh",

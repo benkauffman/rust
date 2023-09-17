@@ -1,27 +1,18 @@
-FROM rust:latest as builder
+FROM rust:latest AS builder
 
-ENV CARGO_TERM_COLOR always
-RUN apt-get update && apt-get install -y libpq-dev
+RUN rustup target add x86_64-unknown-linux-musl
+RUN apt update && apt install -y musl-tools musl-dev
+RUN apt-get install -y build-essential
+RUN yes | apt install gcc-x86-64-linux-gnu
 
-WORKDIR /usr/src/docker-build
+WORKDIR /app
 
-# create empty project for caching dependencies
-RUN USER=root cargo init
-COPY Cargo.lock ./Cargo.toml ./
-
-# cache dependencies
-RUN cargo install --path . --locked
-
-# build project
 COPY ./ .
-RUN touch src/main.rs
-RUN cargo install --path . --locked
-RUN cargo build --release
+ENV RUSTFLAGS='-C linker=x86_64-linux-gnu-gcc'
+RUN cargo build --target x86_64-unknown-linux-musl --release
 
+FROM scratch
 
-# slim image for smaller size
-FROM debian:bookworm-slim
-RUN apt-get update && apt-get install -y libpq-dev curl
-COPY --from=builder /usr/local/cargo/bin/sls-fargate-rust /bin/
-EXPOSE 8080
-CMD ["sls-fargate-rust"]
+WORKDIR /app
+COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/sls-fargate-rust ./
+CMD ["/app/sls-fargate-rust"]

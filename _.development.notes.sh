@@ -2,6 +2,7 @@
 
 # cross compiling rust
 # https://github.com/cross-rs/cross
+# https://kerkour.com/rust-reproducible-cross-compilation-with-docker
 
 # snippet for cross compiling rust on mac
 # https://gist.github.com/shqld/256e2c4f4b97957fb0ec250cdc6dc463

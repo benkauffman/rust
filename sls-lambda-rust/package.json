@@ -5,6 +5,7 @@
         "lint": "cargo clippy",
         "test": "cargo test",
         "invoke": "npx sls invoke --verbose -s development -f func -d '{\"name\":\"Ben\"}'",
+        "dev": "../sh/_.dev.sh",
         "logs": "../sh/_.logs.sh",
         "logs:tail": "../sh/_.logs.tail.sh",
         "clean": "../sh/_.clean.sh",
