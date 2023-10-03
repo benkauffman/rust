@@ -1,0 +1,26 @@
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+  
+scrape_configs:
+  - job_name: "rust-hello-world"
+    static_configs:
+      - targets: ["rust-hello-world:8080"]
+
+  - job_name: "node-hello-world"
+    static_configs:
+      - targets: ["node-hello-world:8081"]
+
+  - job_name: "python-hello-world"
+    static_configs:
+      - targets: ["python-hello-world:8082"]
+
+  - job_name: "go-hello-world"
+    static_configs:
+      - targets: ["go-hello-world:8083"]
+
+  - job_name: "java-hello-world"
+    metrics_path: "/actuator/prometheus"
+    static_configs:
+      - targets: ["java-hello-world:8084"]

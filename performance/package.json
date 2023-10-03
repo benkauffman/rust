@@ -1,0 +1,15 @@
+{
+  "name": "performance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "docker-compose build --parallel",
+    "build:clean": "docker-compose build --parallel --no-cache",
+    "start": "docker-compose up",
+    "stop": "docker-compose down"
+  },
+  "author": "",
+  "license": "ISC"
+}

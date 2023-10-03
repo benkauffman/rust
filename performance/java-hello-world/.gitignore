@@ -1,0 +1,96 @@
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# JetBrains IDE
+.idea/
+
+# User-specific files
+*.rsuser
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+*.msu
+
+# Windows shortcuts
+*.lnk
+
+# Eclipse IDE
+.classpath
+.project
+.settings/
+
+# NetBeans IDE
+nbproject/
+build/
+
+# VS Code directories
+.vscode/
+
+# Maven
+target/
+
+# Gradle
+build/
+.gradle/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+
+# Directory-based project format:
+.dbproj.schemaview
+.schemaview
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+*.msu
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt

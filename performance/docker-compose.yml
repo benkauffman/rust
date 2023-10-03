@@ -1,0 +1,102 @@
+version: "3"
+
+services:
+  rust-hello-world:
+    image: rust-hello-world-image
+    build:
+      context: ./rust-hello-world
+    ports:
+      - "8080:8080"
+    networks:
+      - perf_test_network
+
+  node-hello-world:
+    image: node-hello-world-image
+    build: ./node-hello-world
+    ports:
+      - "8081:8081"
+    networks:
+      - perf_test_network
+
+  python-hello-world:
+    image: python-hello-world-image
+    build: ./python-hello-world
+    ports:
+      - "8082:8082"
+    networks:
+      - perf_test_network
+
+  go-hello-world:
+    image: go-hello-world-image
+    build: ./go-hello-world
+    ports:
+      - "8083:8083"
+    networks:
+      - perf_test_network
+  
+  java-hello-world:
+    image: java-hello-world-image
+    build: ./java-hello-world
+    ports:
+      - "8084:8084"
+    networks:
+      - perf_test_network
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./volumes/prometheus:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    ports:
+      - "9090:9090"
+    networks:
+      - perf_test_network
+
+  grafana:
+    image: grafana/grafana
+    volumes:
+      - ./volumes/grafana:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - prometheus
+    ports:
+      - "3000:3000"
+    networks:
+      - perf_test_network
+
+  start-testing:
+    image: curlimages/curl:latest
+    command: ["-X", "GET", "http://artillery:3001/test/all"]
+    depends_on:
+      artillery:
+        condition: service_healthy
+    networks:
+      - perf_test_network
+
+  artillery:
+    image: artillery-image
+    volumes:
+      - ./volumes/artillery:/usr/src/app/output
+    build: ./artillery
+    depends_on:
+      rust-hello-world:
+        condition: service_healthy
+      node-hello-world:
+        condition: service_healthy
+      python-hello-world:
+        condition: service_healthy
+      go-hello-world:
+        condition: service_healthy
+      java-hello-world:
+        condition: service_healthy
+    ports:
+      - "3001:3001"
+    networks:
+      - perf_test_network
+
+networks:
+  perf_test_network:
+    driver: bridge

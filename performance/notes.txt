@@ -1,0 +1,4 @@
+## benchmarks
+https://programming-language-benchmarks.vercel.app/rust-vs-javascript
+
+https://medium.com/deno-the-complete-reference/node-js-vs-rust-performance-comparison-for-jwt-verify-and-mysql-query-7f35a9b75033
